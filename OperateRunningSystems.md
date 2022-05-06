@@ -1,0 +1,178 @@
+## Boot, reboot, and shut down a system normally
+
+### Reboot
+
+Commands to be run as `root` user
+
+```
+reboot
+systemctl reboot
+shutdown -r now
+init 6
+telinit 6
+```
+
+### Shutdown
+Commands to be run as `root` user
+```
+halt
+systemctl halt
+shutdown -h now
+init 0
+telinit 0
+poweroff
+systemctl poweroff
+```
+
+
+### Boot into targets
+
+Runlevels and Targets:
+
+|Runlevel| Target| Description|
+|---|---|---|
+|0|poweroff.target|Shutdown and poweroff system|
+|1|rescue.target|Setup rescue shell|
+|2|multi-user.target|Setup non-graphical multi-user system|
+|3|multi-user.target|Setup non-graphical multi-user system|
+|4|multi-user.target|Setup non-graphical multi-user system|
+|5|graphical.target|Setup graphical multi-user system|
+|6|reboot.target|Shutdown and reboot system|
+
+To list available system targets
+
+`sudo systemctl list-units --type target`  --> active targets
+
+`sudo systemctl list-units --type target --all`  --> all targets
+
+Set default target
+
+`sudo systemctl set-default <target>`
+
+Switch between targets during session
+
+`sudo systemctl isolate <target>`
+
+---
+## Interrupt Boot process to gain access (change root password)
+
+### Using RHEL disk
+
+1. Reboot with disk installed
+2. Select **Troubleshooting** from menu
+3. Select **Rescue a Red Hat Enterprise Linux System** from menu
+4. When prompted select **Continue** to continue with mounting the Linux installation and mount under `/mnt/sysimage`
+5. Press *Enter* to access shell
+6. Change systemroot to sysimage mount `chroot /mnt/sysimage`, this may move you from a regular shell to a bash-shell. You can now change root password
+7. Prompt password change `passwd`
+8. Enter new password and confirm
+9. Remove autorelabel `rm -f /.autorelable` --> will prevent entire system relable by SELinux
+10. `exit`
+11. `exit` --> will cause system to reboot. 
+12. Eject disk, and access system after reboot with new root password
+
+
+### Using `rd.break`
+
+1. Cancel grub screen autboot
+2. Highlight desired Grub entry and hit *e* to edit
+3. Find and edit line starting with `linux `
+    1. Remove `rhgb quiet`
+    2. Add `rd.break enforcing=0`
+        - `rd.break` -> Interrupts boot process
+        - `enforcing=0` -> Bypass the full SELinux relable
+    3. *crtl-x* to restart
+4. Mount filesystem on `/sysroot` as read/write
+    - `mount -o remount,rw /sysroot`
+5. Change root system to `/sysroot`
+    - `chroot /sysroot`
+6. Change root password
+    - `passwd`
+7. Confirm password change
+8. If you forgot the `enforcing=0` in the grub-edit, you must do a system relable. To do this, create the appropriate file
+    - `touch /.autorelable`
+9. Remount filesystem as read-only
+    - `mount -o remount,ro /`
+10. `exit`
+11. `exit` --> will cause system to reboot. 
+12. After booting into system and autorelable was done,you must restore the /etc/shadow
+    - `restorecon /etc/shadow`
+13. Reenable SELinux
+    - `setenforce 1`
+---
+## Identify CPU/memory intensive processes and kill processes
+
+### `top`
+
+||||
+|-|-|-|
+|PID| Process ID||
+|PR| Priority||
+|NI| Nice| How nice is the process with other processes, lower means less nice thus higher priority|
+|VIRT|Virtual memory used||
+|RES|Amount of resident memory used by the process||
+|SHR|Amount of shared memory used by the process||
+|S|Status of the process||
+|%CPU|The share of CPU time used by the process since the last update||
+|%MEM|The share of physical memory used||
+|TIME+|Total CPU time used by the task in hundredths of a second||
+|COMMAND|The command name or command line (name + options)||
+
+
+|Status| Description|
+|-|-|
+|D|Uninterruptible sleep|
+|R|Running|
+|S|Sleeping|
+|T|Traced (stopped)|
+|Z|Zombie|
+
+### `ps`
+
+Give a snapshot of all current processes
+
+
+### `kill`
+
+`kill -l` to list all kill options
+
+Use `pidof <process>` to get the PID of a given process
+
+The `nice` value of a process can be defined when it is called by using `nice -n <value> <process>` 
+
+Use `renice` to change the `nice` value of a process, `renice +<value> <pid>`
+
+---
+## Adjust process scheduling
+
+`chrt <option> -p <priority> <PID>`
+
+`chrt <option> -p <priority> <program/process>`
+
+priority: 0 - 99
+
+|Short option| Long option| Policy|Description|
+|-|-|-|-|
+|-f |--fifo|SCHED_FIFO|First in First out| 
+|-o |--other|SCHED_OTHER|default Linux-time_sharing|
+|-r |--rr|SCHED_RR|Round Robin|
+|-d |--deadline|SCHED_DEADLINE||
+|-b |--batch|SCHED_BATCH||
+|-i |--idle|SCHED_IDLE|run I/O jobs having less priority|
+
+---
+
+## Manage tuning profiles
+
+Ensure `tuned` is installed. Enable and start it using `systemctl`.
+
+View active profile : `tuned-adm active`
+
+List available profile : `tuned-adm list`
+
+Set desired profile : `tuned-adm profile <profile>`
+
+Check recommended profile : `tuned-adm recommend`
+
+
+## Locate and interpret system log files and journals
