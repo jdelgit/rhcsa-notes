@@ -176,3 +176,45 @@ Check recommended profile : `tuned-adm recommend`
 
 
 ## Locate and interpret system log files and journals
+
+Default location for logs : `/var/log/`
+
+`systemd-analyze` -> See time related stats for bootup
+`systemd-analyze blame` -> see which processes are taking the longest
+
+Check the system journal
+
+`journalctl [application]` 
+`journalctl -u [process]` 
+`journalctl -p err` --> errors
+`journalctl -f` --> follow
+
+---
+## Preserve system journals
+
+```
+mkdir /var/log/journal
+echo "SystemMaxUse=50M" /etc/systemd/journald.conf
+grep SystemMaxUse /etc/systemd/journald.conf
+systemctl restart systemd-journal
+```
+
+---
+
+## Start, stop, and check the status of network services
+
+Use `systemctl`
+
+---
+## Securely transfer files between systems
+
+Use `scp`
+
+Transfer from remote server
+
+
+`scp <remote-user>@<host/ip>:/remote/path/to/source /local/path/destination`
+
+Transfer to remote server
+
+`scp /loca/path/source <remote-user>@<host/ip>:/remote/path/to/destination`
