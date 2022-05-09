@@ -137,9 +137,13 @@ Add second partition
 
 `vgextend <group-name> <lvm-partition2>`
 
-Remove partition from volume-group
+Remove partition from volume group
 
 `vgreduce <group-name> <lvm-partition#>`
+
+Delete volume group
+
+`vgremove <group-name>`
 
 
 ---
