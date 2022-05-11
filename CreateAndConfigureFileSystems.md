@@ -172,6 +172,16 @@ writePolicy:
 
 ## Manage layered storage
 
+Ensure `stratisd` and `stratis-cli` are installed
 
+`yum install stratisd stratic-cli`
+
+Start service
+
+`systemctl start startisd`
+
+Enable at startup
+
+`systemctl enable startisd`
 
 ## Diagnose and correct file permission problems
