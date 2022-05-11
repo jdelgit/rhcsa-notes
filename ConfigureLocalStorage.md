@@ -149,8 +149,94 @@ Delete volume group
 ---
 ## Create and delete logical volumes
 
+`lvs` to display logical volumes
+
+Create logical volume using created volume group
+
+`lvcreate -L <size> -n <logical-volume-name> <volume-group-name>`
+
+List logical volumes with verbose information
+
+`lvdisplay`
+
+Extend logical volume
+
+`lvextend -L<size-to-extend> <logical-volume-path>`
+
+Resize logical volume (potential data loss)
+
+`lvresize -L-<resize> <logical-volume-path>`
+
+Remove logical volume 
+
+First unmount logical volume
+
+`umount <logical-volume-path>`
+
+`lvremove <logical-volume-path>`
+
+Verify removal with `lvs` and `lvdisplay`
+
 ---
+
 ## Configure systems to mount file systems at boot by universally unique ID (UUID) or label
+
+### Create and mount ext4 filesystem using UUID
+
+`mkfs.ext4 <partition-path>`
+
+Copy UUID displayed after creation
+
+To mount on boot the entry must be added to `/etc/fstab`
+
+Edit `/etc/fstab`
+
+```
+....
+....
+UUID=<disk-uuid> <mount-point> <filesystem-type> <options> <dump> <pass>
+
+```
+
+dump: Used by dump-utility to decide when to make a backup. Options 0 or 1. 1 will signal that a backup needs to be done if the dump-utility installed
+pass: Determines in which order the filesystem should be checked. Options 0,1, or 2. 0 if the filesystem should not be checked, 1 is highest priority reserved for root fs, 2 for all other filesystems
+
+Once `/etc/fstab` has been configured use `mount <mount-point>` to mount the disk
+
+`umount <mount-point>` to unmount
+
+
+### Label disk and mount using label
+
+To label disk use `e2label`
+
+`e2label <disk-volume> <label-name>`
+
+Edit `/etc/fstab`
+
+```
+....
+....
+LABEL=<disk-label> <mount-point> <filesystem-type> <options> <dump> <pass>
+
+```
 
 ---
 ## Add new partitions and logical volumes, and swap to a system non-destructively
+
+Create logical volume
+`lvcreate -n <swap-name> -L <size> <volume-group>`
+
+Create swapspace using the volume
+
+`mkswap <volume-group-path>`
+
+Turn  on swap `swapon <volume-group-swappath>`
+
+Check summary of the swap 
+
+`swapon -s`
+
+For persistent swapspace, update the swap entry in the `/etc/fstab` then activate with `swapon -a`
+
+Turn off swap `swapoff <volume-group-swappath>`

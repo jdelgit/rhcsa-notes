@@ -1,0 +1,177 @@
+## Create, mount, unmount, and use vfat, ext4, and xfs file systems
+
+Create a logical volume
+
+### vfat (memory)
+Create the filesystem
+
+`mkfs.vfat <logcal-volume-path>`
+
+Do a filesystem checlk if corruption is suspected
+
+`fsck.vfat <logcal-volume-path>`
+
+### ext4  (many small files)
+
+Create filesystem
+`mkfs.ext4 <logcal-volume-path>`
+
+Filesystem check
+
+`fsck <logcal-volume-path>`
+
+Get (low-level) filesystem info
+
+`dumpe2fs <logcal-volume-path>`
+
+### xfs  (few large files)
+
+Create filesystem
+
+`mkfs.xfs <logcal-volume-path>`
+
+Filesystem check
+
+`xfs_repair <logcal-volume-path>`
+
+Get filesystem info
+
+`xfs_info <logcal-volume-path>`
+
+---
+
+## Mount and unmount network file systems using NFS
+
+### Setup NFS server (Not part of exam)
+Ensure NFS utilities are installed
+
+`yum install nfs-utils`
+
+Add NFS to firewall rule
+
+```
+firewall-cmd --permanent --add-service=nfs
+firewall-cmd --reload
+```
+
+Enable nfs-service and rpcbind
+
+```
+systemctl enable rpcbind nfs-server
+systemctl start rpcbind nfs-server
+```
+
+Configure SELinux
+
+```
+setsebool -P nfs_export_all_rw on
+setsebool -P nfs_export_all_ro on
+setsebool -P use_nfs_home_dirs on
+```
+
+If you're experiencing the following error:
+
+`clnt_create: RPC: Program not registered`
+
+You may have skipped the `systemctl start rpcbind nfs-server` step
+
+Create directories to export/share
+
+Add the directories to `/etc/exports`
+
+```
+#/etc/exports
+
+</path/to/local-source>  <client-host>(options)
+```
+Reload the exports config
+
+`exportfs -rav`
+
+List exported NFS shares
+
+`showmount -e localhost`
+
+### Mount share on client
+
+Ensure nfs-utils are installed
+
+`yum install nfs-utils`
+
+Mount share
+
+`mount -t nfs <host-server>:<path/to/source> /path/to/local/destination`
+
+---
+## Extend existing logical volumes
+
+Check volume-group state
+
+`vgs`
+
+Check logical-volume state
+
+`lvs`
+
+Extend volume
+
+`lvextend -L+<size> <logical-volume-path>`
+
+Extend filesystem 
+
+### Ext4
+`resize2fs <logical-volume-path> `
+
+### Xfs
+
+`xfs_growfs <mount-point>`
+
+## Create and configure set-GID directories for collaboration
+
+Create group if not yet present
+
+`groupadd <group-name>`
+
+Create folder for group
+
+`mkdir -pv </path/to/shared>`
+
+Set ownership for folder
+
+`chown nobody:accounts </path/to/shared>`
+
+Set sticky-bit for folder 
+
+`chmod g+s </path/to/shared>`
+
+Set permissions for folder
+
+`chmod 770 </path/to/shared>`
+
+## Configure disk compression
+
+Ensure `vdo` and `kmod-kvdo` are installed
+
+`yum insall vdo kmod-kvdo`
+
+### Create Virtual Data Optimiser volume
+
+`vdo create --name=<vdo-name> --device=<device> --vdoLogicalSize=<size> --writePolicy=async`
+
+writePolicy:
+ - sync:
+    - Writes are acknowledged only after data is stably written
+ - async:
+    - Writes are acknowledged after data has been cached for writing to stable storage
+ - auto (default):
+    - VDO will check the storage device and determine whether it supports flushes. If it does, VDO will run in async mode, otherwise it will run in sync mode
+
+### Create filesystem on top of VDO
+
+`mkfs.<type> /dev/mapper/<vdo-name>`
+
+## Manage layered storage
+
+
+
+## Diagnose and correct file permission problems
