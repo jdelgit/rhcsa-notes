@@ -172,6 +172,8 @@ writePolicy:
 
 ## Manage layered storage
 
+Stratis allows snapshots and restoration of filesystems
+
 Ensure `stratisd` and `stratis-cli` are installed
 
 `yum install stratisd stratic-cli`
@@ -184,4 +186,68 @@ Enable at startup
 
 `systemctl enable startisd`
 
+### Create and extend pool
+
+Create stratis pool with partitions
+
+`stratis pool create <pool-name> <partition-path1> ...<partition-path[n]>`
+
+List created pools
+
+`stratis pool list`
+
+Create filesystem
+
+`stratis fs create <pool-name> <filesystem-name>`
+
+List filesystems
+
+`stratis fs list <pool-name>`
+
+Add disk to pool
+
+`stratis pool add <pool-name> <partition-path>`
+
+### Manage snapshots
+
+Create snapshot
+
+`stratis fs snapshot <pool-name> <filesystem-name> <snapshot-name>`
+
+### Restore snapshot
+
+Unmount current filesystem
+
+Mount snapshot filesystem
+
+### Delete snapshot
+
+`stratis fs destroy <pool-name> <filesystem-name>`
+
+
+### Delete Pool
+
+`stratis pool destroy <pool-name>`
+
 ## Diagnose and correct file permission problems
+
+
+### View permissions
+
+`ls -l`
+
+### Manage ACL
+
+ACL configured file will have a `+` at the end of the permissions
+
+Check info
+
+`getfacl <file>`
+
+Configure ACL
+
+entity: user / group / outer
+
+`setfacl -m <entity>:<entity-name>:<permissions> <file>`
+
+
