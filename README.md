@@ -1,4 +1,6 @@
-# Red Hat Certified System Administrator (RHCSA) exam study notes
+# Red Hat Certified System Administrator (RHCSA EX200) exam study notes
+
+Notes taken in [Obsidian](https://obsidian.md/)
 
 Sections 
 - [[01. Understand and use essential tools]]

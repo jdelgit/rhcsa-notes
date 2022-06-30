@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "README.md",
+            "file": "07. Manage Basic Networking.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "07. Manage Basic Networking.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "ad33ad72404fcdee",
   "lastOpenFiles": [
-    "README.md",
-    "01. Understand and use essential tools.md",
-    "06. Deploy Configure and Maintain Systems.md",
     "07. Manage Basic Networking.md",
     "08. Manage Users and Groups.md",
     "09. Manage Security.md",
+    "README.md",
+    "().md",
+    "01. Understand and use essential tools.md",
+    "06. Deploy Configure and Maintain Systems.md",
     "10. Manage Containers.md",
     "02. Create simple shell scripts.md",
-    "03. Operate Running Systems.md",
-    "04. Configure Local Storage.md"
+    "03. Operate Running Systems.md"
   ]
 }
