@@ -91,13 +91,13 @@
   "lastOpenFiles": [
     "06. Deploy Configure and Maintain Systems.md",
     "07. Manage Basic Networking.md",
+    "08. Manage Users and Groups.md",
+    "09. Manage Security.md",
+    "10. Manage Containers.md",
     "01. Understand and use essential tools.md",
     "02. Create simple shell scripts.md",
     "03. Operate Running Systems.md",
     "04. Configure Local Storage.md",
-    "05. Create and Configure FileSystems.md",
-    "08. Manage Users and Groups.md",
-    "09. Manage Security.md",
-    "10. Manage Containers.md"
+    "05. Create and Configure FileSystems.md"
   ]
 }
