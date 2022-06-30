@@ -1,0 +1,103 @@
+{
+  "main": {
+    "id": "f0f7aa907ac19890",
+    "type": "split",
+    "children": [
+      {
+        "id": "ad33ad72404fcdee",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "6. Deploy Configure and Maintain Systems.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9b2c97362890665a",
+    "type": "split",
+    "children": [
+      {
+        "id": "7c0554ce89067122",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9351fed8d348c138",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "eb1331625fc6fcc2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "42b51237296d81ff",
+    "type": "split",
+    "children": [
+      {
+        "id": "78132d85080cba64",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cc8d3c53518a86e6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "6. Deploy Configure and Maintain Systems.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "ad33ad72404fcdee",
+  "lastOpenFiles": [
+    "6. Deploy Configure and Maintain Systems.md",
+    "5. Create and Configure FileSystems.md",
+    "4. Configure Local Storage.md",
+    "3. Operate Running Systems.md",
+    "2. Create simple shell scripts.md",
+    "1. Understand and use essential tools.md",
+    "10. Manage Containers.md",
+    "9. Manage Security.md",
+    "8. Manage Users and Groups.md",
+    "7. Manage Basic Networking.md"
+  ]
+}
