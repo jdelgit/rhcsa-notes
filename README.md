@@ -16,6 +16,12 @@ Sections
 
 [RedHat Exam Study points](https://www.redhat.com/en/services/training/ex200-red-hat-certified-system-administrator-rhcsa-exam?section=Objectives)
 
+Legend:
+
+Commands starting with `#` should be run as `root` user
+Commands starting with `$` can be run as any user
+
+
 
 Sources: 
  - [RHCSA RHEL 8 - (Red Hat Certified System Administrator)](https://www.youtube.com/playlist?list=PLsSTa0x6YacC2jNX9iV1ukbA8g4mcTfdE) by [Computers, Security & Gadgets](https://www.youtube.com/c/ComputersSecurityGadgets)
