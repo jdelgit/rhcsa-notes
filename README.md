@@ -19,5 +19,6 @@ Sections
 
 Sources: 
  - [RHCSA RHEL 8 - (Red Hat Certified System Administrator)](https://www.youtube.com/playlist?list=PLsSTa0x6YacC2jNX9iV1ukbA8g4mcTfdE) by [Computers, Security & Gadgets](https://www.youtube.com/c/ComputersSecurityGadgets)
+ - [RedHat](https://www.redhat.com)
  - Duckduckgo
  - Man pages
