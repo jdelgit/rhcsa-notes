@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "09. Manage Security.md",
+            "file": "10. Manage Containers.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "09. Manage Security.md",
+                "file": "10. Manage Containers.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,14 +89,14 @@
   },
   "active": "ad33ad72404fcdee",
   "lastOpenFiles": [
-    "09. Manage Security.md",
     "10. Manage Containers.md",
+    "02. Create simple shell scripts.md",
+    "01. Understand and use essential tools.md",
+    "09. Manage Security.md",
     "07. Manage Basic Networking.md",
     "06. Deploy Configure and Maintain Systems.md",
     "README.md",
     "08. Manage Users and Groups.md",
-    "02. Create simple shell scripts.md",
-    "01. Understand and use essential tools.md",
     "05. Create and Configure FileSystems.md",
     "04. Configure Local Storage.md"
   ]
