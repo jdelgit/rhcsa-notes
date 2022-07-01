@@ -1,6 +1,6 @@
 # Red Hat Certified System Administrator (RHCSA EX200) exam study notes
 
-Notes taken in [Obsidian](https://obsidian.md/)
+Notes taken in [Obsidian](https://obsidian.md/) Markdown file editor and reader
 
 Sections 
 - [[01. Understand and use essential tools]]
@@ -19,6 +19,7 @@ Sections
 Legend:
 
 Commands starting with `#` should be run as `root` user
+
 Commands starting with `$` can be run as any user
 
 
