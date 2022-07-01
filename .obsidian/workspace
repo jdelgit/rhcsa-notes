@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "02. Create simple shell scripts.md",
+            "file": "01. Understand and use essential tools.md",
             "mode": "source",
             "source": false
           }
@@ -53,7 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 242
   },
   "right": {
     "id": "42b51237296d81ff",
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02. Create simple shell scripts.md",
+                "file": "01. Understand and use essential tools.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,15 +89,15 @@
   },
   "active": "ad33ad72404fcdee",
   "lastOpenFiles": [
+    "01. Understand and use essential tools.md",
+    "README.md",
     "02. Create simple shell scripts.md",
     "03. Operate Running Systems.md",
-    "01. Understand and use essential tools.md",
-    "09. Manage Security.md",
-    "README.md",
+    "05. Create and Configure FileSystems.md",
+    "04. Configure Local Storage.md",
     "10. Manage Containers.md",
+    "09. Manage Security.md",
     "07. Manage Basic Networking.md",
-    "06. Deploy Configure and Maintain Systems.md",
-    "08. Manage Users and Groups.md",
-    "05. Create and Configure FileSystems.md"
+    "06. Deploy Configure and Maintain Systems.md"
   ]
 }
